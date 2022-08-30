@@ -21,17 +21,16 @@ import {
 } from "react-native";
 import HomeScreen from "./pages/HomeScreen";
 import SecondScreen from "./pages/SecondScreen";
+import ThirdScreen from "./pages/ThirdScreen";
 
 const { width, height } = Dimensions.get("screen");
 
 const homePage = () => {
-
   return (
     <SafeAreaView style={styles.con}>
-      <HomeScreen />
-      <SecondScreen />
-
-     
+      {/* <HomeScreen /> */}
+      {/* <SecondScreen /> */}
+      <ThirdScreen />
     </SafeAreaView>
   );
 };
