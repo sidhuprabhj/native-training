@@ -45,6 +45,7 @@ const FourthScreen = () => {
   ];
 
   const data = array2.reduce((prev, curr) => {
+    console.log(prev, curr.price * curr.quantity);
     return prev + curr.price * curr.quantity;
   }, 0);
 
@@ -59,39 +60,37 @@ const FourthScreen = () => {
     setArrayData("");
     setVariableName(0);
   };
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{}}>
-        {array2
-          // ?.filter((item) => item?.id !== 4)
-          ?.map((item) => {
-            // console.log(item, "otem");
-            return (
-              <View
-                key={item.id}
+        {array2?.map((item) => {
+          return (
+            <View
+              key={item.id}
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginVertical: 10,
+              }}
+            >
+              <Text style={{ marginHorizontal: 10 }}>{item?.name}</Text>
+              {/* <Text style={{ marginHorizontal: 10 }}>{item?.phoneno}</Text> */}
+              <TouchableOpacity
                 style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginVertical: 10,
+                  backgroundColor: "skyblue",
+                  padding: 4,
+                  borderRadius: 10,
+                }}
+                onPress={() => {
+                  updateData(item);
                 }}
               >
-                <Text style={{ marginHorizontal: 10 }}>{item?.name}</Text>
-                {/* <Text style={{ marginHorizontal: 10 }}>{item?.phoneno}</Text> */}
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: "skyblue",
-                    padding: 4,
-                    borderRadius: 10,
-                  }}
-                  onPress={() => {
-                    updateData(item);
-                  }}
-                >
-                  <Text>Get User Data</Text>
-                </TouchableOpacity>
-              </View>
-            );
-          })}
+                <Text>Get User Data</Text>
+              </TouchableOpacity>
+            </View>
+          );
+        })}
         <TouchableOpacity
           style={{
             backgroundColor: "green",
