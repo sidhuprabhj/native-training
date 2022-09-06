@@ -24,6 +24,8 @@ import SecondScreen from "./pages/SecondScreen";
 import ThirdScreen from "./pages/ThirdScreen";
 import FourthScreen from "./pages/FourthScreen";
 import Calculator from "./pages/Calculator";
+import SixthScreen from "./pages/SixthScreen";
+import SeventhScreen from "./pages/SeventhScreen";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -34,7 +36,9 @@ const homePage = () => {
       {/* <SecondScreen /> */}
       {/* <ThirdScreen /> */}
       {/* <FourthScreen /> */}
-      <Calculator />
+      {/* <Calculator /> */}
+      {/* <SixthScreen /> */}
+      <SeventhScreen />
     </SafeAreaView>
   );
 };
