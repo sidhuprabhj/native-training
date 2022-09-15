@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Button,
-  FlatList,
   SafeAreaView,
   StatusBar,
   Dimensions,
@@ -26,19 +25,22 @@ import FourthScreen from "./pages/FourthScreen";
 import Calculator from "./pages/Calculator";
 import SixthScreen from "./pages/SixthScreen";
 import SeventhScreen from "./pages/SeventhScreen";
+import FlatList1 from "./pages/FlatList1";
 
 const { width, height } = Dimensions.get("screen");
 
-const homePage = () => {
+const App = () => {
   return (
     <SafeAreaView style={styles.con}>
-      {/* <HomeScreen /> */}
+      <HomeScreen />
+      {/* <BackupScreen /> */}
       {/* <SecondScreen /> */}
       {/* <ThirdScreen /> */}
       {/* <FourthScreen /> */}
       {/* <Calculator /> */}
       {/* <SixthScreen /> */}
-      <SeventhScreen />
+      {/* <SeventhScreen /> */}
+      {/* <FlatList1 /> */}
     </SafeAreaView>
   );
 };
@@ -53,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default homePage;
+export default App;

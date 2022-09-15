@@ -26,16 +26,14 @@ const SeventhScreen = () => {
     setRefreshing(true);
     setTimeout(() => {
       setRefreshing(false);
-    }, 1000);
+    }, 10000);
   };
   console.log("refreshing", pressable);
-  const [rippleColor, setRippleColor] = useState(randomHexColor());
-  const [rippleOverflow, setRippleOverflow] = useState(false);
   return (
     <SafeAreaView
       style={{
         flex: 1,
-        marginHorizontal: 30,
+        backgroundColor: refreshing === true ? "orange" : "skyblue",
         // opacity: modalVisible === true ? 0.2 : 1,
         // backgroundColor: modalVisible === true ? "red" : "#fff",
       }}
@@ -78,79 +76,78 @@ const SeventhScreen = () => {
       >
         <Text style={{ fontSize: 20 }}>Open Modal</Text>
       </TouchableOpacity>
-      <View style={{ height: 160 }}>
-        <ScrollView
-          contentContainerStyle={{}}
-          refreshControl={
-            <RefreshControl
-              colors="red"
-              enabled={false}
-              progressViewOffset={70}
-              title={"refreshing"}
-              titleColor="red"
-              size="large"
-              tintColor="red"
-              refreshing={refreshing}
-              onRefresh={() => {
-                onRefresh();
-              }}
-            />
-          }
-        ></ScrollView>
-      </View>
-
-      <Pressable
-        disabled={false}
-        style={{
-          backgroundColor:
-            pressable === "pressIn"
-              ? "green"
-              : pressable === "press"
-              ? "orange"
-              : pressable === "pressOut"
-              ? "black"
-              : "red",
-        }}
-        onPressIn={() => {
-          setPressable("pressIn");
-        }}
-        onLongPress={() => {
-          console.log(";longpress");
-        }}
-        delayLongPress={() => {
-          console.log(";delay");
-        }}
-        onPress={() => {
-          setPressable("press");
-        }}
-        onPressOut={() => {
-          setPressable("pressOut");
-        }}
+      {/* <View style={{ height: 160, backgroundColor: "green" }}> */}
+      <ScrollView
+        contentContainerStyle={{}}
+        refreshControl={
+          <RefreshControl
+            colors="red" //android
+            enabled={false}
+            progressViewOffset={0}
+            title={"refreshing"} //ios
+            titleColor="red" //ios
+            size="large"
+            tintColor="red" //ios
+            refreshing={refreshing}
+            onRefresh={() => {
+              onRefresh();
+            }}
+          />
+        }
       >
-        <Text style={{ fontSize: 18, marginVertical: 10 }}>I'm pressable!</Text>
-      </Pressable>
-
-      <Button
-        title="Native leeafing"
-        color="red"
-        accessibilityLabel="Learn more about this purple button"
-      />
-      <View style={styles.container}>
-        <TouchableNativeFeedback
-          onPress={() => {
-            setRippleColor(randomHexColor());
-            setRippleOverflow(!rippleOverflow);
+        <Pressable
+          disabled={false}
+          style={{
+            marginHorizontal: 20,
+            borderRadius: 10,
+            padding: 10,
+            backgroundColor:
+              pressable === "pressIn"
+                ? "green"
+                : pressable === "press"
+                ? "orange"
+                : pressable === "pressOut"
+                ? "black"
+                : "red",
           }}
-          background={TouchableNativeFeedback.Ripple(
-            rippleColor,
-            rippleOverflow
-          )}
+          onPressIn={() => {
+            setPressable("pressIn");
+          }}
+          onLongPress={() => {
+            // console.log(";longpress");
+          }}
+          delayLongPress={() => {
+            console.log(";delay");
+          }}
+          onPress={() => {
+            console.log("pressed");
+            setPressable("press");
+          }}
+          onPressOut={() => {
+            setPressable("pressOut");
+          }}
         >
-          <View style={styles.touchable}>
-            <Text style={styles.text}>TouchableNativeFeedback</Text>
-          </View>
-        </TouchableNativeFeedback>
-      </View>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: refreshing ? 22 : 15,
+              marginVertical: 10,
+            }}
+          >
+            {refreshing === true ? "Refrshing" : "I'm pressable!"}
+          </Text>
+        </Pressable>
+
+        <Button
+          title="asd"
+          color="red"
+          accessibilityLabel="Learn more about this purple button"
+        />
+        <TouchableOpacity>
+          <Text>asdsd</Text>
+        </TouchableOpacity>
+      </ScrollView>
+      {/* </View> */}
     </SafeAreaView>
   );
 };
