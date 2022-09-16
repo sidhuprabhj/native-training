@@ -10,6 +10,7 @@ import {
   RefreshControl,
 } from "react-native";
 import React, { useState } from "react";
+import { WebView } from "react-native-webview";
 
 const ModalScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,10 +22,10 @@ const ModalScreen = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: modalVisible === true ? "#ccc" : "#fff",
       }}
     >
-      <ScrollView
+      <WebView source={{ uri: "https://gemsen.com/" }} />
+      {/* <ScrollView
         refreshControl={
           <RefreshControl
             onRefresh={() => {
@@ -133,7 +134,7 @@ const ModalScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
     </SafeAreaView>
   );
 };
