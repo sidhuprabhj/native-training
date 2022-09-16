@@ -26,13 +26,15 @@ import Calculator from "./pages/Calculator";
 import SixthScreen from "./pages/SixthScreen";
 import SeventhScreen from "./pages/SeventhScreen";
 import FlatList1 from "./pages/FlatList1";
+import ModalScreen from "./pages/ModalScreen";
 
 const { width, height } = Dimensions.get("screen");
 
 const App = () => {
   return (
     <SafeAreaView style={styles.con}>
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <ModalScreen />
       {/* <BackupScreen /> */}
       {/* <SecondScreen /> */}
       {/* <ThirdScreen /> */}
