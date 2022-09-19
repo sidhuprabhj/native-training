@@ -8,11 +8,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@react-native-picker/picker": "^2.4.4",
     "expo": "~46.0.9",
     "expo-status-bar": "~1.4.0",
     "expo-updates": "~0.14.5",
     "react": "18.0.0",
     "react-native": "0.69.4",
+    "react-native-dropdown-picker": "^5.4.2",
     "react-native-webview": "^11.23.1"
   },
   "devDependencies": {
