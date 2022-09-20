@@ -1,10 +1,10 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
 import React, { useState } from "react";
 import MiniProps from "./MiniProps";
 import { Picker } from "@react-native-picker/picker";
 import DropDownPicker from "react-native-dropdown-picker";
-const PropsScreen = () => {
-  const [native, setNative] = useState("native");
+const PropsScreen = ({ navigation }) => {
+  const [native, setNative] = useState("native1");
   const [selectedValue, setSelectedValue] = useState("java1");
   const [native2, setNative2] = useState("native1");
   const [open, setOpen] = useState(false);
@@ -20,13 +20,66 @@ const PropsScreen = () => {
     { label: "Banana7", value: "banana9" },
   ]);
   console.log(value);
+
+  const array = [
+    {
+      id: 1, //0
+    },
+    {
+      id: 2, //1
+    },
+    {
+      id: 3, //2
+    },
+    {
+      id: 4, //3
+    },
+    {
+      id: 5, //4
+    },
+    {
+      id: 6, //5
+    },
+  ];
+
+  const newArray = array?.filter((item) => item.id !== 2);
+
+  console.log(newArray);
+
   return (
-    <View>
-      <Text>PropsScreen</Text>
-      <Text>{native}</Text>
-      <View style={{ marginVertical: 20 }}>
-        {/* <MiniProps native={native} setNative={setNative} /> */}
+    <SafeAreaView style={{ flex: 1 }}>
+      <View>
+        <Text style={{ textAlign: "center", color: "red", fontSize: 18 }}>
+          PropsScreen
+        </Text>
       </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Sixth");
+        }}
+      >
+        <Text>Sixth</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Fourth");
+        }}
+      >
+        <Text>Fourth</Text>
+      </TouchableOpacity>
+      {/* <Text>PropsScreen</Text>
+      <Text>{native}</Text>
+      <TouchableOpacity
+        onPress={() => {
+          setNative("native2/0");
+        }}
+        style={{ backgroundColor: "green" }}
+      >
+        <Text>Update</Text>
+      </TouchableOpacity>
+      <View style={{ marginVertical: 20 }}>
+        <MiniProps native1={native} setNative={setNative} />
+      </View> */}
       {/* <Picker
         selectedValue={selectedValue}
         style={{ height: 150, width: 150 }}
@@ -42,23 +95,36 @@ const PropsScreen = () => {
         <Picker.Item label="JavaScript4" value="js4" />
         <Picker.Item label="JavaScript5" value="js5" />
       </Picker> */}
-      <DropDownPicker
+      {/* <DropDownPicker
         open={open}
-        multiple={false}
+        multiple={true}
         value={value}
         items={items}
-        min={0}
-        max={3}
+        disabled={false}
+        // min={0}
+        // max={3}
         setOpen={() => {
           setOpen(!open);
         }}
         setValue={(e) => {
           setValue(e);
         }}
-        maxHeight={300}
+        maxHeight={200}
         setItems={setItems}
-      />
-    </View>
+        // style={{ height: 50, marginTop: 100 }}
+      /> */}
+      {array
+        ?.filter((item) => item.id > 3)
+        ?.map((item) => {
+          return <Text>{item.id}</Text>;
+        })}
+      <Text>slice</Text>
+      {array?.slice(2, 6)?.map((item) => {
+        return <Text>{item.id}</Text>;
+      })}
+
+      <Text></Text>
+    </SafeAreaView>
   );
 };
 

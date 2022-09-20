@@ -13,9 +13,8 @@ const MiniProp3 = ({ setNative, native }) => {
             {
               text: "Cancel1",
               onPress: () => console.log("Cancel Pressed"),
-              style: "cancel",
             },
-            { text: "OK1", onPress: () => setNative("new update") },
+            { text: "Continue", onPress: () => setNative("new update") },
           ]);
         }}
       >

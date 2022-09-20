@@ -5,8 +5,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
 
-const FourthScreen = () => {
+const FourthScreen = ({ navigation }) => {
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   const [arrayData, setArrayData] = useState("");
 
@@ -62,7 +64,14 @@ const FourthScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Ionicons name="arrow-back" size={40} />
+      </TouchableOpacity>
       <View style={{}}>
         {array2?.map((item) => {
           return (
@@ -118,7 +127,7 @@ const FourthScreen = () => {
         </Text>
         <Text style={{ marginHorizontal: 10 }}>variable :{variableName}</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
