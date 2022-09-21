@@ -4,10 +4,12 @@ import {
   FlatList,
   ScrollView,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 
-const FlatList1 = () => {
+const FlatList1 = ({ navigation }) => {
   const array = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 25, 34, 44, 54, 64, 74, 84, 94,
     104, 114, 142,
@@ -19,8 +21,14 @@ const FlatList1 = () => {
   //   return <Text>{item}</Text>;
   // };
   return (
-    <View style={{ flex: 1 }}>
-      <Text>FlatList</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Ionicons name="arrow-back-outline" size={30} />
+      </TouchableOpacity>
       {/* <ScrollView
         horizontal
         contentContainerStyle={{
@@ -55,7 +63,7 @@ const FlatList1 = () => {
           );
         }}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

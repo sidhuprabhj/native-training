@@ -70,7 +70,16 @@ const FourthScreen = ({ navigation }) => {
           navigation.goBack();
         }}
       >
-        <Ionicons name="arrow-back" size={40} />
+        <Ionicons name="arrow-back-outline" size={30} />
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => {
+          navigation.replace("FlatList");
+          // navigation.replace("FlatList"); // deleted the previous screen from stack
+        }}
+      >
+        <Text>FlatList1</Text>
       </TouchableOpacity>
       <View style={{}}>
         {array2?.map((item) => {

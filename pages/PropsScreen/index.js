@@ -1,9 +1,11 @@
 import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MiniProps from "./MiniProps";
 import { Picker } from "@react-native-picker/picker";
+import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 const PropsScreen = ({ navigation }) => {
+  // const navigation = useNavigation();
   const [native, setNative] = useState("native1");
   const [selectedValue, setSelectedValue] = useState("java1");
   const [native2, setNative2] = useState("native1");
@@ -44,8 +46,6 @@ const PropsScreen = ({ navigation }) => {
 
   const newArray = array?.filter((item) => item.id !== 2);
 
-  console.log(newArray);
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View>
@@ -66,6 +66,13 @@ const PropsScreen = ({ navigation }) => {
         }}
       >
         <Text>Fourth</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("FlatList");
+        }}
+      >
+        <Text>FlatList1</Text>
       </TouchableOpacity>
       {/* <Text>PropsScreen</Text>
       <Text>{native}</Text>
@@ -113,7 +120,7 @@ const PropsScreen = ({ navigation }) => {
         setItems={setItems}
         // style={{ height: 50, marginTop: 100 }}
       /> */}
-      {array
+      {/* {array
         ?.filter((item) => item.id > 3)
         ?.map((item) => {
           return <Text>{item.id}</Text>;
@@ -121,7 +128,7 @@ const PropsScreen = ({ navigation }) => {
       <Text>slice</Text>
       {array?.slice(2, 6)?.map((item) => {
         return <Text>{item.id}</Text>;
-      })}
+      })} */}
 
       <Text></Text>
     </SafeAreaView>

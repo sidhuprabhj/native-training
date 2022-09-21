@@ -3,37 +3,66 @@
 import * as React from "react";
 import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+  TransitionPresets,
+} from "@react-navigation/stack";
 import PropsScreen from "./pages/PropsScreen";
+import FlatList1 from "./pages/FlatList1";
 import SixthScreen from "./pages/SixthScreen";
+import SplashScreen from "./pages/SplashScreen";
+import SeventhScreen from "./pages/SeventhScreen";
+import "react-native-gesture-handler";
 import FourthScreen from "./pages/FourthScreen";
 
-// const HomeScreen = () => {
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Text>Home Screen</Text>
-//     </View>
-//   );
-// };
-
-const Stack1 = createStackNavigator();
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack1.Navigator initialRouteName="Props1213123">
-        <Stack1.Screen
-          name="Props1213123"
+      <Stack.Navigator
+        screenOptions={({ route, navigation }) => ({
+          headerShown: false,
+          gestureEnabled: true,
+          // ...TransitionPresets.FadeFromBottomAndroid,
+        })}
+        initialRouteName="SplashScreen"
+      >
+        <Stack.Screen
+          name="PropsScreen"
           component={PropsScreen}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+          }}
         />
-        <Stack1.Screen
+        <Stack.Screen
+          name="FlatList"
+          component={FlatList1}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
           name="Fourth"
           component={FourthScreen}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            // cardStyleInterpolator:
+            //   CardStyleInterpolators.ModalSlideFromBottomIOS,
+
+            ...TransitionPresets.ScaleFromCenterAndroid,
+          }}
         />
-        <Stack1.Screen name="Sixth" component={SixthScreen} />
-      </Stack1.Navigator>
+        <Stack.Screen name="Sixth" component={SixthScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
