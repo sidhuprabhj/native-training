@@ -81,6 +81,7 @@ const FourthScreen = ({ navigation }) => {
       >
         <Text>FlatList1</Text>
       </TouchableOpacity>
+
       <View style={{}}>
         {array2?.map((item) => {
           return (

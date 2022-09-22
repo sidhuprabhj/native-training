@@ -6,8 +6,9 @@ const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate("PropsScreen");
-    }, 1500);
+    }, 1200);
   }, []);
+
   return (
     <SafeAreaView style={{ backgroundColor: "#fff", flex: 1 }}>
       <Image

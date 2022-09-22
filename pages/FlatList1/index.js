@@ -9,14 +9,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 
-const FlatList1 = ({ navigation }) => {
-  const array = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 25, 34, 44, 54, 64, 74, 84, 94,
-    104, 114, 142,
-  ];
+const FlatList1 = ({ navigation, route }) => {
+  const { array, items1, array1, array2, array3 } = route.params;
 
   const [data, setData] = useState(0);
-  console.log(data);
   // const Data = (item) => {
   //   return <Text>{item}</Text>;
   // };
@@ -29,6 +25,19 @@ const FlatList1 = ({ navigation }) => {
       >
         <Ionicons name="arrow-back-outline" size={30} />
       </TouchableOpacity>
+
+      {items1?.map((item) => {
+        return (
+          <Text>
+            {item.label}
+            {item.value}
+          </Text>
+        );
+      })}
+
+      {array?.map((item) => {
+        return <Text>{item.id}</Text>;
+      })}
       {/* <ScrollView
         horizontal
         contentContainerStyle={{
@@ -46,7 +55,7 @@ const FlatList1 = ({ navigation }) => {
         })}
       </ScrollView> */}
 
-      <FlatList
+      {/* <FlatList
         data={array}
         keyExtractor={(item) => item}
         renderItem={({ item }) => {
@@ -62,7 +71,7 @@ const FlatList1 = ({ navigation }) => {
             </TouchableOpacity>
           );
         }}
-      />
+      /> */}
     </SafeAreaView>
   );
 };

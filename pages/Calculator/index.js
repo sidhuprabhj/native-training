@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Calculator = () => {
+const Calculator = ({ navigation }) => {
   const calc = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   const [value, setValue] = useState([]);
   const [addition, setAddition] = useState("");
@@ -33,7 +33,14 @@ const Calculator = () => {
   // console.log("calculate", !false);
 
   return (
-    <View style={{ flex: 1, marginHorizontal: 20 }}>
+    <SafeAreaView style={{ flex: 1, marginHorizontal: 20 }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Ionicons name="arrow-back-outline" size={30} />
+      </TouchableOpacity>
       <View
         style={{
           width: "100%",
@@ -98,7 +105,7 @@ const Calculator = () => {
         <Text style={{ color: "#fff", textAlign: "center" }}>Calculate</Text>
       </TouchableOpacity>
       <Text>Total: {total}</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 

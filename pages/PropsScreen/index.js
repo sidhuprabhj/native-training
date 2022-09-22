@@ -4,6 +4,7 @@ import MiniProps from "./MiniProps";
 import { Picker } from "@react-native-picker/picker";
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
+import { TextInput } from "react-native-gesture-handler";
 const PropsScreen = ({ navigation }) => {
   // const navigation = useNavigation();
   const [native, setNative] = useState("native1");
@@ -69,10 +70,20 @@ const PropsScreen = ({ navigation }) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("FlatList");
+          navigation.navigate("FlatList", {
+            items1: items,
+            array: array,
+          });
         }}
       >
         <Text>FlatList1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Calculators");
+        }}
+      >
+        <Text>Calculator</Text>
       </TouchableOpacity>
       {/* <Text>PropsScreen</Text>
       <Text>{native}</Text>
