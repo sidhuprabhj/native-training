@@ -5,6 +5,7 @@ import { Picker } from "@react-native-picker/picker";
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { TextInput } from "react-native-gesture-handler";
+import Calculator from "../Calculator";
 const PropsScreen = ({ navigation }) => {
   // const navigation = useNavigation();
   const [native, setNative] = useState("native1");
@@ -49,6 +50,8 @@ const PropsScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      {/* <Calculator name1={items} /> */}
+
       <View>
         <Text style={{ textAlign: "center", color: "red", fontSize: 18 }}>
           PropsScreen
@@ -73,6 +76,7 @@ const PropsScreen = ({ navigation }) => {
           navigation.navigate("FlatList", {
             items1: items,
             array: array,
+            a: "native",
           });
         }}
       >

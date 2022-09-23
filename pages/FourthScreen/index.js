@@ -74,12 +74,16 @@ const FourthScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity
+        style={{
+          marginVertical: 10,
+          backgroundColor: "yellow",
+          paddingVertical: 10,
+        }}
         onPress={() => {
-          navigation.replace("FlatList");
-          // navigation.replace("FlatList"); // deleted the previous screen from stack
+          navigation.navigate("FlatList");
         }}
       >
-        <Text>FlatList1</Text>
+        <Text>FlatList1111</Text>
       </TouchableOpacity>
 
       <View style={{}}>

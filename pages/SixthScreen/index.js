@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-const SixthScreen = () => {
+const SixthScreen = ({ navigation }) => {
   const [textInputData, setTextInputData] = useState("");
   const [isEnabled, setIsEnabled] = useState(false);
   const [statusBar, setStatusBar] = useState(false);
@@ -24,6 +24,20 @@ const SixthScreen = () => {
   // console.log("isEnabled", isEnabled);
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Ionicons name="arrow-back-outline" size={30} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Fourth");
+        }}
+      >
+        <Text>FourthScreen</Text>
+      </TouchableOpacity>
       <View
         style={{
           borderWidth: 1,

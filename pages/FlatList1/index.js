@@ -7,15 +7,33 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const FlatList1 = ({ navigation, route }) => {
-  const { array, items1, array1, array2, array3 } = route.params;
+  const object = {
+    a: 1,
+    b: 2,
+    c: 3,
+  };
 
-  const [data, setData] = useState(0);
-  // const Data = (item) => {
-  //   return <Text>{item}</Text>;
-  // };
+  const { a, b, c } = object;
+
+  const [data, setData] = useState();
+
+  const [displayArrayData, setDisplayArrayData] = useState();
+
+  useEffect(() => {
+    if (route.params) {
+      const { array, items1, array1, array2, array3, a } = route.params;
+      setData(items1);
+      setDisplayArrayData(array);
+    } else {
+      console.log("no routes");
+    }
+  }, [route.params]);
+
+  console.log(data, "data");
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TouchableOpacity
@@ -24,9 +42,14 @@ const FlatList1 = ({ navigation, route }) => {
         }}
       >
         <Ionicons name="arrow-back-outline" size={30} />
+        <Text>
+          {a}
+          {b}
+          {c}
+        </Text>
       </TouchableOpacity>
 
-      {items1?.map((item) => {
+      {data?.map((item) => {
         return (
           <Text>
             {item.label}
@@ -35,7 +58,7 @@ const FlatList1 = ({ navigation, route }) => {
         );
       })}
 
-      {array?.map((item) => {
+      {displayArrayData?.map((item) => {
         return <Text>{item.id}</Text>;
       })}
       {/* <ScrollView

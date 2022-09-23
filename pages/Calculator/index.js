@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Calculator = ({ navigation }) => {
+const Calculator = ({ navigation, name1 }) => {
   const calc = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   const [value, setValue] = useState([]);
   const [addition, setAddition] = useState("");
@@ -15,7 +15,7 @@ const Calculator = ({ navigation }) => {
   //   if (!!value === true) {
   //   }
   // }, [value]);
-
+  console.log(name1);
   useEffect(() => {
     if (calculate === true) {
       const calculateData = value
@@ -29,7 +29,6 @@ const Calculator = ({ navigation }) => {
     }
   }, [calculate]);
 
-  console.log("calculate", calculate);
   // console.log("calculate", !false);
 
   return (
@@ -41,6 +40,10 @@ const Calculator = ({ navigation }) => {
       >
         <Ionicons name="arrow-back-outline" size={30} />
       </TouchableOpacity>
+
+      {name1.map((item) => {
+        return <Text>{item.label}</Text>;
+      })}
       <View
         style={{
           width: "100%",

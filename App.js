@@ -26,8 +26,8 @@ const App = () => {
       <Stack.Navigator
         screenOptions={() => ({
           headerShown: false,
-          gestureEnabled: true,
-          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+          // gestureEnabled: true,
+          // cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
 
           // ...TransitionPresets.ModalSlideFromBottomIOS,
         })}
@@ -36,14 +36,20 @@ const App = () => {
         <Stack.Screen
           name="PropsScreen"
           component={PropsScreen}
-          options={
-            {
-              // headerShown: false,
-            }
-          }
+          options={{
+            headerShown: false,
+          }}
         />
+
         <Stack.Screen
-          title="screen"
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
           name="FlatList"
           component={FlatList1}
           options={
@@ -53,13 +59,7 @@ const App = () => {
             }
           }
         />
-        <Stack.Screen
-          name="SplashScreen"
-          component={SplashScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
+
         <Stack.Screen
           name="Fourth"
           component={FourthScreen}
