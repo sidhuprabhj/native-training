@@ -80,7 +80,7 @@ const PropsScreen = ({ navigation }) => {
           });
         }}
       >
-        <Text>FlatList1</Text>
+        <Text>FlatList11111</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
