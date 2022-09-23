@@ -52,6 +52,36 @@ const PropsScreen = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       {/* <Calculator name1={items} /> */}
 
+      <View>
+        <Text style={{ textAlign: "center", color: "red", fontSize: 18 }}>
+          PropsScreen
+        </Text>
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Sixth");
+        }}
+      >
+        <Text>Sixth</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Fourth");
+        }}
+      >
+        <Text>Fourth</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("FlatList", {
+            items1: items,
+            array: array,
+            a: "native",
+          });
+        }}
+      >
+        <Text>FlatList11111</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Calculators");
