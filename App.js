@@ -34,19 +34,15 @@ const App = () => {
         initialRouteName="SplashScreen"
       >
         <Stack.Screen
-          name="PropsScreen"
+          name="PropsScreen1"
           component={PropsScreen}
-          options={{
-            headerShown: false,
-          }}
+          options={{}}
         />
 
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
-          options={{
-            headerShown: false,
-          }}
+          options={{}}
         />
 
         <Stack.Screen

@@ -74,14 +74,23 @@ const PropsScreen = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("FlatList", {
-            items1: items,
-            array: array,
-            a: "native",
+            data: items,
+            data2: array,
+            string: "native class",
+            number: 2,
           });
         }}
       >
-        <Text>FlatList11111</Text>
+        <Text>FlatList</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("FlatList");
+        }}
+      >
+        <Text>FlatList without props</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Calculators");
@@ -89,6 +98,12 @@ const PropsScreen = ({ navigation }) => {
       >
         <Text>Calculator</Text>
       </TouchableOpacity>
+
+      <View style={{ marginTop: 40 }}>
+        {items?.map((item, index) => {
+          return <Text key={index}>{item.label}</Text>;
+        })}
+      </View>
       {/* <Text>PropsScreen</Text>
       <Text>{native}</Text>
       <TouchableOpacity

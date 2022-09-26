@@ -11,29 +11,58 @@ import React, { useState, useEffect } from "react";
 
 const FlatList1 = ({ navigation, route }) => {
   const object = {
-    a: 1,
+    a1: 1,
     b: 2,
     c: 3,
   };
 
-  const { a, b, c } = object;
+  const { a1, b, c } = object;
 
-  const [data, setData] = useState();
+  // console.log(a1, b, c, object);
+
+  // const { data, data2 } = route.params;
+  // //
+  // console.log(data2);
+
+  const [data1, setData1] = useState();
 
   const [displayArrayData, setDisplayArrayData] = useState();
 
+  // useEffect(() => {
+  //   if (route.params) {
+  //     const { array, items1, array1, array2, array3, a } = route.params;
+  //     setData(items1);
+  //     setDisplayArrayData(array);
+  //   } else {
+  //     console.log("no routes");
+  //   }
+  // }, [route.params]);
+
+  // console.log(data, "data");
+
+  const [updatedData, setUpdatedData] = useState({
+    string1: "Areeb",
+    data: [],
+    data2: [],
+  });
+  // const [updatedData2, setUpdatedData2] = useState([]);
+  // const [updatedString, setUpdatedString] = useState("");
   useEffect(() => {
-    if (route.params) {
-      const { array, items1, array1, array2, array3, a } = route.params;
-      setData(items1);
-      setDisplayArrayData(array);
+    if (route.params !== undefined) {
+      const { data, data2, string } = route.params;
+      setUpdatedData({
+        string1: string,
+        data: data,
+        data2: data2,
+      });
+      // setUpdatedData2(data2);
+      // setUpdatedString(string);
     } else {
-      console.log("no routes");
+      console.log("no data");
     }
   }, [route.params]);
 
-  console.log(data, "data");
-
+  console.log(updatedData, "updatedData");
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TouchableOpacity
@@ -43,23 +72,18 @@ const FlatList1 = ({ navigation, route }) => {
       >
         <Ionicons name="arrow-back-outline" size={30} />
         <Text>
-          {a}
-          {b}
-          {c}
+          {updatedData.string1}
+          {/* {b}
+          {c} */}
         </Text>
       </TouchableOpacity>
 
-      {data?.map((item) => {
-        return (
-          <Text>
-            {item.label}
-            {item.value}
-          </Text>
-        );
+      {updatedData.data?.map((item, index) => {
+        return <Text>{item.label}</Text>;
       })}
 
-      {displayArrayData?.map((item) => {
-        return <Text>{item.id}</Text>;
+      {updatedData.data2?.map((item, index) => {
+        return <Text key={index}>{item.id}</Text>;
       })}
       {/* <ScrollView
         horizontal

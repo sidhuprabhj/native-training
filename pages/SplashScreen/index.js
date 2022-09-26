@@ -5,7 +5,7 @@ import Winter from "../../assets/Winter.gif";
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate("PropsScreen");
+      navigation.navigate("PropsScreen1");
     }, 1200);
   }, []);
 
