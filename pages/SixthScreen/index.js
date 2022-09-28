@@ -16,9 +16,6 @@ const SixthScreen = ({ navigation }) => {
   const [statusBar, setStatusBar] = useState(false);
 
   const data = 1;
-  console.log("data", data);
-
-  console.log("first", textInputData.length);
 
   // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   // console.log("isEnabled", isEnabled);
@@ -59,7 +56,6 @@ const SixthScreen = ({ navigation }) => {
           autoCorrect={true}
           autoFocus={false}
           onChangeText={(r3) => {
-            console.log(r3);
             setTextInputData(r3);
           }}
           value={`${textInputData}`}
@@ -87,7 +83,6 @@ const SixthScreen = ({ navigation }) => {
         thumbColor={isEnabled ? "yellow" : "red"}
         // ios_backgroundColor="yellow"
         onValueChange={(e) => {
-          console.log(e);
           setIsEnabled(e);
           // setIsEnabled(!isEnabled);
           setStatusBar(!statusBar);

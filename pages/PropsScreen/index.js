@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
 import React, { useState, useEffect } from "react";
 import MiniProps from "./MiniProps";
 import { Picker } from "@react-native-picker/picker";
+import IssuesScreen from "../IssuesScreen";
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { TextInput } from "react-native-gesture-handler";
@@ -23,7 +24,6 @@ const PropsScreen = ({ navigation }) => {
     { label: "Apple5", value: "apple8" },
     { label: "Banana7", value: "banana9" },
   ]);
-  console.log(value);
 
   const array = [
     {
@@ -50,9 +50,11 @@ const PropsScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <IssuesScreen navigation={navigation} />
+
       {/* <Calculator name1={items} /> */}
 
-      <View>
+      {/* <View>
         <Text style={{ textAlign: "center", color: "red", fontSize: 18 }}>
           PropsScreen
         </Text>
@@ -103,7 +105,7 @@ const PropsScreen = ({ navigation }) => {
         {items?.map((item, index) => {
           return <Text key={index}>{item.label}</Text>;
         })}
-      </View>
+      </View> */}
       {/* <Text>PropsScreen</Text>
       <Text>{native}</Text>
       <TouchableOpacity

@@ -74,7 +74,6 @@ const ThirdScreen = () => {
   popArray.shift();
   popArray.unshift(20, 30, 40);
   popArray.push(20, 30, 40);
-  console.log(popArray);
   return (
     <View>
       <Text>{}</Text>

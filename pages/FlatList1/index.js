@@ -62,7 +62,6 @@ const FlatList1 = ({ navigation, route }) => {
     }
   }, [route.params]);
 
-  console.log(updatedData, "updatedData");
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <TouchableOpacity

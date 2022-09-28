@@ -17,6 +17,7 @@ import SeventhScreen from "./pages/SeventhScreen";
 import Calculator from "./pages/Calculator";
 import "react-native-gesture-handler";
 import FourthScreen from "./pages/FourthScreen";
+import IssuesScreen from "./pages/IssuesScreen";
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,12 @@ const App = () => {
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
+          options={{}}
+        />
+
+        <Stack.Screen
+          name="IssuesScreen"
+          component={IssuesScreen}
           options={{}}
         />
 
