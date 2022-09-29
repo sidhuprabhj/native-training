@@ -15,12 +15,11 @@ const SixthScreen = ({ navigation }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [statusBar, setStatusBar] = useState(false);
 
-  const data = 1;
 
-  // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  // console.log("isEnabled", isEnabled);
   return (
     <SafeAreaView style={{ flex: 1 }}>
+
+
       <TouchableOpacity
         onPress={() => {
           navigation.goBack();
@@ -66,8 +65,8 @@ const SixthScreen = ({ navigation }) => {
           // multiline={true}
           // numberOfLines={5}
           placeholder="Enter email"
-          // textAlign="right"
-          // selection={{ start: textInputData.length, end: textInputData.length }}
+        // textAlign="right"
+        // selection={{ start: textInputData.length, end: textInputData.length }}
         />
         <TouchableOpacity
           onPress={() => {

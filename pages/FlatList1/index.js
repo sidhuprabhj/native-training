@@ -16,6 +16,7 @@ const FlatList1 = ({ navigation, route }) => {
     c: 3,
   };
 
+  // console.log(route.params)
   const { a1, b, c } = object;
 
   // console.log(a1, b, c, object);
@@ -47,18 +48,46 @@ const FlatList1 = ({ navigation, route }) => {
   });
   // const [updatedData2, setUpdatedData2] = useState([]);
   // const [updatedString, setUpdatedString] = useState("");
+  // useEffect(() => {
+  //   if (route.params !== undefined) {
+  //     const { data, data2, string } = route.params;
+  //     setUpdatedData({
+  //       string1: string,
+  //       data: data,
+  //       data2: data2,
+  //     });
+  //     // setUpdatedData2(data2);
+  //     // setUpdatedString(string);
+  //   } else {
+  //     console.log("no data");
+  //   }
+  // }, [route.params]);
+
+  const [details, setDetails] = useState();
+  const [details2, setDetails2] = useState();
+  const [items, setItems] = useState([
+    { id: 1, label: "Apple", value: "apple2" },
+    { id: 2, label: "Banana3", value: "banana3" },
+    { id: 3, label: "Apple2", value: "apple5" },
+    { id: 4, label: "Banana3", value: "banana6" },
+  ]);
+
+  const aa = [1, 2, 3, 4];
+
+  const b1 = aa.filter((item) => {
+    return item === 1;
+  });
+  console.log(b1, "b");
+
   useEffect(() => {
     if (route.params !== undefined) {
-      const { data, data2, string } = route.params;
-      setUpdatedData({
-        string1: string,
-        data: data,
-        data2: data2,
-      });
-      // setUpdatedData2(data2);
-      // setUpdatedString(string);
+      const { data, data2, id } = route.params;
+      console.log(id, "id");
+      const updatedData = items?.filter((item) => item.id === id);
+      setDetails(updatedData);
+      setDetails2(data2);
     } else {
-      console.log("no data");
+      console.log("Nodata");
     }
   }, [route.params]);
 
@@ -71,19 +100,21 @@ const FlatList1 = ({ navigation, route }) => {
       >
         <Ionicons name="arrow-back-outline" size={30} />
         <Text>
-          {updatedData.string1}
           {/* {b}
           {c} */}
         </Text>
       </TouchableOpacity>
-
-      {updatedData.data?.map((item, index) => {
-        return <Text>{item.label}</Text>;
+      {details?.map((item, index) => {
+        return <Text key={index}>{item.label}</Text>;
+      })}
+      {details2?.map((item, index) => {
+        return (
+          <View key={index}>
+            <Text>{item.id}</Text>
+          </View>
+        );
       })}
 
-      {updatedData.data2?.map((item, index) => {
-        return <Text key={index}>{item.id}</Text>;
-      })}
       {/* <ScrollView
         horizontal
         contentContainerStyle={{

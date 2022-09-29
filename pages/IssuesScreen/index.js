@@ -17,7 +17,7 @@ const IssuesScreen = ({ navigation }) => {
   //   setModal(true);
   // }, []);
 
-  const array = [1, 2, 3, 4, 5];
+  const array = [1, 2, 3, 4, 5, 6, 7, 8];
   const Item = ({ title }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
@@ -92,30 +92,29 @@ const IssuesScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
-      <ScrollView horizontal>
-        {array?.map((item) => {
-          return (
-            <Text style={{ marginHorizontal: 40 }} key={item}>
-              {item}
-            </Text>
-          );
-        })}
-      </ScrollView>
 
-      {array.length === 0 ? <Text>no data</Text> : <></>}
+      </Modal>
+      {array?.map((item) => {
+        return (
+          <Text style={{ marginHorizontal: 40 }} key={item}>
+            {item}
+          </Text>
+        );
+      })}
+
+      {array.length === 0 ? <Text style={{ color: 'red' }}>no data</Text> : <></>}
       <View style={{ marginVertical: 10 }}></View>
       <FlatList
-        horizontal
+        // horizontal={true}
         data={array}
         renderItem={({ item }) => {
-          return <Text style={{ marginHorizontal: 40 }}>{item}</Text>;
+          return <Text style={{ marginHorizontal: 40, marginVertical: 40 }}>{item}</Text>;
         }}
-        ListEmptyComponent={({}) => {
+        ListEmptyComponent={() => {
           return <Text>no data</Text>;
         }}
         ItemSeparatorComponent={() => {
-          return <View style={{ borderWidth: 1 }}></View>;
+          return <View style={{ borderWidth: 0.5 }}></View>;
         }}
         ListFooterComponent={() => {
           return (
@@ -127,8 +126,9 @@ const IssuesScreen = ({ navigation }) => {
         ListHeaderComponent={() => {
           return <Text>Header</Text>;
         }}
-        ListFooterComponentStyle={{ backgroundColor: "green" }}
+        ListFooterComponentStyle={{ backgroundColor: "green", paddingVertical: 40 }}
       />
+
     </SafeAreaView>
   );
 };

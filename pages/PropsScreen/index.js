@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+  TouchableOpacityBase,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import MiniProps from "./MiniProps";
 import { Picker } from "@react-native-picker/picker";
@@ -15,14 +21,10 @@ const PropsScreen = ({ navigation }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState([]);
   const [items, setItems] = useState([
-    { label: "Apple", value: "apple2" },
-    { label: "Banana3", value: "banana3" },
-    { label: "Apple2", value: "apple5" },
-    { label: "Banana3", value: "banana6" },
-    { label: "Apple4", value: "apple7" },
-    { label: "Banana5", value: "banana7" },
-    { label: "Apple5", value: "apple8" },
-    { label: "Banana7", value: "banana9" },
+    { id: 1, label: "Apple", value: "apple2" },
+    { id: 2, label: "Banana3", value: "banana3" },
+    { id: 3, label: "Apple2", value: "apple5" },
+    { id: 4, label: "Banana3", value: "banana6" },
   ]);
 
   const array = [
@@ -50,15 +52,6 @@ const PropsScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <IssuesScreen navigation={navigation} />
-
-      {/* <Calculator name1={items} /> */}
-
-      {/* <View>
-        <Text style={{ textAlign: "center", color: "red", fontSize: 18 }}>
-          PropsScreen
-        </Text>
-      </View>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Sixth");
@@ -100,7 +93,30 @@ const PropsScreen = ({ navigation }) => {
       >
         <Text>Calculator</Text>
       </TouchableOpacity>
+      <View style={{ marginVertical: 30 }}></View>
+      {items?.map((item, index) => {
+        return (
+          <TouchableOpacity
+            key={index}
+            onPress={() => {
+              navigation.navigate("FlatList", { id: item.id });
+            }}
+          >
+            <Text key={index}>{item.label}</Text>
+          </TouchableOpacity>
+        );
+      })}
 
+      {/* <IssuesScreen navigation={navigation} /> */}
+
+      {/* <Calculator name1={items} /> */}
+
+      {/* <View>
+        <Text style={{ textAlign: "center", color: "red", fontSize: 18 }}>
+          PropsScreen
+        </Text>
+      </View>
+     
       <View style={{ marginTop: 40 }}>
         {items?.map((item, index) => {
           return <Text key={index}>{item.label}</Text>;
