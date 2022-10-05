@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
+import { Ionicons } from "@expo/vector-icons";
 
 const IssuesScreen = ({ navigation }) => {
   const [data, setData] = useState(0);
@@ -31,6 +32,13 @@ const IssuesScreen = ({ navigation }) => {
   const getItemCount = (data) => 50;
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.openDrawer();
+        }}
+      >
+        <Ionicons name="menu" size={30} />
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           setModal(true);
@@ -92,7 +100,6 @@ const IssuesScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-
       </Modal>
       {array?.map((item) => {
         return (
@@ -102,13 +109,21 @@ const IssuesScreen = ({ navigation }) => {
         );
       })}
 
-      {array.length === 0 ? <Text style={{ color: 'red' }}>no data</Text> : <></>}
+      {array.length === 0 ? (
+        <Text style={{ color: "red" }}>no data</Text>
+      ) : (
+        <></>
+      )}
       <View style={{ marginVertical: 10 }}></View>
       <FlatList
         // horizontal={true}
         data={array}
         renderItem={({ item }) => {
-          return <Text style={{ marginHorizontal: 40, marginVertical: 40 }}>{item}</Text>;
+          return (
+            <Text style={{ marginHorizontal: 40, marginVertical: 40 }}>
+              {item}
+            </Text>
+          );
         }}
         ListEmptyComponent={() => {
           return <Text>no data</Text>;
@@ -126,9 +141,11 @@ const IssuesScreen = ({ navigation }) => {
         ListHeaderComponent={() => {
           return <Text>Header</Text>;
         }}
-        ListFooterComponentStyle={{ backgroundColor: "green", paddingVertical: 40 }}
+        ListFooterComponentStyle={{
+          backgroundColor: "green",
+          paddingVertical: 40,
+        }}
       />
-
     </SafeAreaView>
   );
 };

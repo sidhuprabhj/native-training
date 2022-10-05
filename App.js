@@ -18,17 +18,26 @@ import Calculator from "./pages/Calculator";
 import "react-native-gesture-handler";
 import FourthScreen from "./pages/FourthScreen";
 import IssuesScreen from "./pages/IssuesScreen";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
 import NavigationpropsScreen from "./pages/NavigationpropsScreen";
 import DisplayDetailsScreen from "./pages/NavigationpropsScreen/DisplayDetailsScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 const Stack = createStackNavigator();
 const Bottomtab = createBottomTabNavigator();
-
+const Drawer = createDrawerNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <StackNavigator />
+      {/* <StackNavigator /> */}
+      <Drawer.Navigator initialRouteName="SplashScreen">
+        <Drawer.Screen
+          name="IssuesScreen"
+          component={IssuesScreen}
+          options={{ headerShown: false }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
@@ -147,15 +156,17 @@ const BottomTabNavigator = () => {
         }}
       />
       <Bottomtab.Screen
-        name="IssuesScreen"
-        component={IssuesScreen}
+        name="DisplayDetailsScreen"
+        component={DisplayDetailsScreen}
         options={{
           tabBarLabel: ({ focused }) => {
             console.log(focused, "focused");
 
             return (
               <View>
-                <Text style={{ color: focused ? "red" : "black" }}>Issue</Text>
+                <Text style={{ color: focused ? "red" : "black" }}>
+                  Display Details
+                </Text>
               </View>
             );
           },

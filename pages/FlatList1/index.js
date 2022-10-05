@@ -104,6 +104,13 @@ const FlatList1 = ({ navigation, route }) => {
           {c} */}
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Calculators");
+        }}
+      >
+        <Text>Calcultor</Text>
+      </TouchableOpacity>
       {details?.map((item, index) => {
         return <Text key={index}>{item.label}</Text>;
       })}

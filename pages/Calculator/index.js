@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
 import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { StackActions } from "@react-navigation/native";
 
 const Calculator = ({ navigation, name1 }) => {
   const calc = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
@@ -15,7 +16,6 @@ const Calculator = ({ navigation, name1 }) => {
   //   if (!!value === true) {
   //   }
   // }, [value]);
-  console.log(name1);
   useEffect(() => {
     if (calculate === true) {
       const calculateData = value
@@ -30,6 +30,7 @@ const Calculator = ({ navigation, name1 }) => {
   }, [calculate]);
 
   // console.log("calculate", !false);
+  const popAction = StackActions.pop(4);
 
   return (
     <SafeAreaView style={{ flex: 1, marginHorizontal: 20 }}>
@@ -40,10 +41,14 @@ const Calculator = ({ navigation, name1 }) => {
       >
         <Ionicons name="arrow-back-outline" size={30} />
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.dispatch(popAction);
+        }}
+      >
+        <Text>POP</Text>
+      </TouchableOpacity>
 
-      {name1.map((item) => {
-        return <Text>{item.label}</Text>;
-      })}
       <View
         style={{
           width: "100%",
