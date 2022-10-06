@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StackActions } from "@react-navigation/native";
 
-const Calculator = ({ navigation, name1 }) => {
+const Calculator = ({ a, b, c }) => {
   const calc = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  console.log(a, b, c);
   const [value, setValue] = useState([]);
   const [addition, setAddition] = useState("");
   const [total, setTotal] = useState(0);

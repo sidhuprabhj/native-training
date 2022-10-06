@@ -1,8 +1,8 @@
 // In App.js in a new project
 
 import * as React from "react";
-import { View, Text } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { View, Text, TouchableOpacity } from "react-native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import {
   createStackNavigator,
   CardStyleInterpolators,
@@ -18,31 +18,76 @@ import Calculator from "./pages/Calculator";
 import "react-native-gesture-handler";
 import FourthScreen from "./pages/FourthScreen";
 import IssuesScreen from "./pages/IssuesScreen";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 
 import NavigationpropsScreen from "./pages/NavigationpropsScreen";
 import DisplayDetailsScreen from "./pages/NavigationpropsScreen/DisplayDetailsScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import CustomDrawerContent from "./pages/CustomDrawerContent";
 const Stack = createStackNavigator();
 const Bottomtab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const App = () => {
+  const array = [
+    { name: "Home", route: "" },
+    { name: "FlatList1", route: "" },
+    { name: "Issue", route: "" },
+  ];
   return (
     <NavigationContainer>
-      {/* <StackNavigator /> */}
-      <Drawer.Navigator initialRouteName="SplashScreen">
-        <Drawer.Screen
-          name="IssuesScreen"
-          component={IssuesScreen}
-          options={{ headerShown: false }}
-        />
-      </Drawer.Navigator>
+      <DrawerNavigation />
+
+      {/* <View
+        style={{
+          marginBottom: 50,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-around",
+        }}
+      >
+        {array?.map((item) => {
+          return (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate(item.route);
+              }}
+              key={item.name}
+              style={{ paddingVertical: 10, alignSelf: "center" }}
+            >
+              <Ionicons name="add" style={{ alignSelf: "center" }} size={20} />
+              <Text>{item.name}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View> */}
     </NavigationContainer>
   );
 };
 
 export default App;
+
+const DrawerNavigation = () => {
+  return (
+    <Drawer.Navigator
+      initialRouteName="SplashScreen"
+      drawerContent={({ navigation }, props) => (
+        <CustomDrawerContent props={props} navigation={navigation} />
+      )}
+    >
+      <Drawer.Screen
+        name="StackNavigator"
+        component={StackNavigator}
+        options={{ headerShown: false }}
+      />
+    </Drawer.Navigator>
+  );
+};
 
 const StackNavigator = () => {
   return (

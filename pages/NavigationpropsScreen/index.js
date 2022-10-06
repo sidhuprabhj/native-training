@@ -1,5 +1,7 @@
 import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import Calculator from "../Calculator";
 
 const NavigationpropsScreen = ({ navigation }) => {
   const array = [
@@ -29,8 +31,19 @@ const NavigationpropsScreen = ({ navigation }) => {
       description: "this is Biology",
     },
   ];
+  const a = 1;
+  const b = 2;
   return (
     <SafeAreaView>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.openDrawer();
+        }}
+      >
+        <Ionicons name="menu" size={30} />
+      </TouchableOpacity>
+
+      {/* <Calculator a={a} b={b} c={"20"} /> */}
       {array?.map((item) => {
         return (
           <TouchableOpacity
