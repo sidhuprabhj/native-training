@@ -2,8 +2,11 @@ import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Calculator from "../Calculator";
+import { useDrawerStatus } from "@react-navigation/drawer";
 
 const NavigationpropsScreen = ({ navigation }) => {
+  const isDrawerOpen = useDrawerStatus() === "open";
+  console.log(isDrawerOpen, "isDrawerOpen");
   const array = [
     {
       name: "Native",
@@ -34,7 +37,7 @@ const NavigationpropsScreen = ({ navigation }) => {
   const a = 1;
   const b = 2;
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ opacity: isDrawerOpen === true ? 0.2 : 1 }}>
       <TouchableOpacity
         onPress={() => {
           navigation.openDrawer();

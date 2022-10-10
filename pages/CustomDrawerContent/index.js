@@ -1,7 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
+import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import {
   Image,
+  Linking,
   SafeAreaView,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -9,8 +12,8 @@ import {
 
 function CustomDrawerContent({ navigation }) {
   return (
-    <SafeAreaView style={{ marginTop: 40 }}>
-      <View
+    <SafeAreaView style={{ marginTop: 40, flex: 1 }}>
+      {/* <View
         style={{
           flexDirection: "row",
           alignItems: "center",
@@ -33,45 +36,58 @@ function CustomDrawerContent({ navigation }) {
             navigation.closeDrawer();
           }}
         >
-          <Ionicons name="close-circle" size={30} color="red" />
+          <Ionicons name="close-circle" size={30} color="green" />
         </TouchableOpacity>
-      </View>
-      <TouchableOpacity
-        style={{
-          marginVertical: 10,
-          backgroundColor: "skyblue",
-          paddingVertical: 10,
-        }}
-        onPress={() => {
-          navigation.navigate("FlatList");
-        }}
-      >
-        <Text style={{ paddingLeft: 20 }}>Flatlist</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          marginVertical: 10,
-          backgroundColor: "skyblue",
-          paddingVertical: 10,
-        }}
-        onPress={() => {
-          navigation.navigate("Fourth");
-        }}
-      >
-        <Text style={{ paddingLeft: 20 }}>FourthScreen</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          marginVertical: 10,
-          backgroundColor: "skyblue",
-          paddingVertical: 10,
-        }}
-        onPress={() => {
-          navigation.navigate("IssuesScreen");
-        }}
-      >
-        <Text style={{ paddingLeft: 20 }}>IssuesScreen</Text>
-      </TouchableOpacity>
+      </View> */}
+      <ScrollView>
+        <DrawerItem
+          focused={false}
+          drawerLabel={<Ionicons name="add" />}
+          activeTintColor="red"
+          inactiveTintColor="green"
+          label="Help1"
+          labelStyle={{ fontSize: 29 }}
+          style={{ backgroundColor: "yellow" }}
+          onPress={() => Linking.openURL("https://mywebsite.com/help")}
+        />
+
+        <TouchableOpacity
+          style={{
+            marginVertical: 10,
+            backgroundColor: "skyblue",
+            paddingVertical: 10,
+          }}
+          onPress={() => {
+            navigation.navigate("FlatList");
+          }}
+        >
+          <Text style={{ paddingLeft: 20 }}>Flatlist</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            marginVertical: 10,
+            backgroundColor: "skyblue",
+            paddingVertical: 10,
+          }}
+          onPress={() => {
+            navigation.navigate("Fourth");
+          }}
+        >
+          <Text style={{ paddingLeft: 20 }}>FourthScreen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            marginVertical: 10,
+            backgroundColor: "skyblue",
+            paddingVertical: 10,
+          }}
+          onPress={() => {
+            navigation.navigate("IssuesScreen");
+          }}
+        >
+          <Text style={{ paddingLeft: 20 }}>IssuesScreen</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }

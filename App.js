@@ -79,10 +79,29 @@ const DrawerNavigation = () => {
       drawerContent={({ navigation }, props) => (
         <CustomDrawerContent props={props} navigation={navigation} />
       )}
+      defaultStatus="open"
+      screenOptions={{
+        lazy: true,
+        // overlayColor: "red",
+        // drawerStatusBarAnimation​:'slide',
+        // drawerStatusBarAnimation​:true,
+        swipeEnabled: true,
+        drawerStyle: {
+          backgroundColor: "#c6cbef",
+          width: "50%",
+        },
+        drawerPosition: "left",
+        drawerType: "front",
+      }}
     >
       <Drawer.Screen
         name="StackNavigator"
         component={StackNavigator}
+        options={{ headerShown: false }}
+      />
+      <Drawer.Screen
+        name="Fourth"
+        component={FourthScreen}
         options={{ headerShown: false }}
       />
     </Drawer.Navigator>
@@ -131,7 +150,7 @@ const StackNavigator = () => {
         options={{}}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Fourth"
         component={FourthScreen}
         options={
@@ -141,7 +160,7 @@ const StackNavigator = () => {
             // ...TransitionPresets.ScaleFromCenterAndroid,
           }
         }
-      />
+      /> */}
       <Stack.Screen
         name="Calculators"
         component={Calculator}
