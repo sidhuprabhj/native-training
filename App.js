@@ -15,6 +15,7 @@ import SixthScreen from "./pages/SixthScreen";
 import SplashScreen from "./pages/SplashScreen";
 import SeventhScreen from "./pages/SeventhScreen";
 import Calculator from "./pages/Calculator";
+import TabBar from "./pages/TabBar";
 import "react-native-gesture-handler";
 import FourthScreen from "./pages/FourthScreen";
 import IssuesScreen from "./pages/IssuesScreen";
@@ -24,15 +25,16 @@ import {
   DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
-
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import NavigationpropsScreen from "./pages/NavigationpropsScreen";
 import DisplayDetailsScreen from "./pages/NavigationpropsScreen/DisplayDetailsScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import CustomDrawerContent from "./pages/CustomDrawerContent";
 const Stack = createStackNavigator();
-const Bottomtab = createBottomTabNavigator();
+const MaterialBottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+const MaterialBottomTab1 = createMaterialBottomTabNavigator();
 const App = () => {
   const array = [
     { name: "Home", route: "" },
@@ -76,16 +78,13 @@ const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
       initialRouteName="SplashScreen"
-      drawerContent={({ navigation }, props) => (
-        <CustomDrawerContent props={props} navigation={navigation} />
-      )}
-      defaultStatus="open"
+      drawerContent={({ navigation }) => {
+        return <CustomDrawerContent navigation={navigation} />;
+      }}
       screenOptions={{
-        lazy: true,
         // overlayColor: "red",
         // drawerStatusBarAnimation​:'slide',
         // drawerStatusBarAnimation​:true,
-        swipeEnabled: true,
         drawerStyle: {
           backgroundColor: "#c6cbef",
           width: "50%",
@@ -180,9 +179,12 @@ const StackNavigator = () => {
 };
 const BottomTabNavigator = () => {
   return (
-    <Bottomtab.Navigator
+    <MaterialBottomTab.Navigator
+      activeColor="#f0edf6"
+      inactiveColor="#3e2465"
+      barStyle={{ backgroundColor: "#fff" }}
       screenOptions={{
-        showLabel: false,
+        showLabel: true,
         headerShown: false,
         tabBarStyle: {
           paddingHorizontal: 20,
@@ -203,23 +205,28 @@ const BottomTabNavigator = () => {
       // }}
       // activeColor="black"
     >
-      <Bottomtab.Screen
-        name="NavigationpropsScreen"
-        component={NavigationpropsScreen}
+      <MaterialBottomTab.Screen
+        name="TabBar"
+        component={TabBar}
+        labeled={true}
         options={{
           tabBarLabel: ({ focused }) => {
+            console.log("focused", focused);
             return (
               <View>
                 <Text style={{ color: focused ? "red" : "#000" }}>Home1s</Text>
               </View>
             );
           },
+          tabBarBadge: () => {
+            return <Text>1</Text>;
+          },
           tabBarIcon: ({ focused }) => (
             <Ionicons name="home" color={focused ? "red" : "black"} size={20} />
           ),
         }}
       />
-      <Bottomtab.Screen
+      <MaterialBottomTab.Screen
         name="DisplayDetailsScreen"
         component={DisplayDetailsScreen}
         options={{
@@ -245,7 +252,7 @@ const BottomTabNavigator = () => {
           },
         }}
       />
-      <Bottomtab.Screen
+      <MaterialBottomTab.Screen
         name="FlatList"
         component={FlatList1}
         options={{
@@ -263,6 +270,6 @@ const BottomTabNavigator = () => {
           ),
         }}
       />
-    </Bottomtab.Navigator>
+    </MaterialBottomTab.Navigator>
   );
 };

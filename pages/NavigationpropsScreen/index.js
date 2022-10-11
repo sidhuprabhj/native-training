@@ -5,8 +5,6 @@ import Calculator from "../Calculator";
 import { useDrawerStatus } from "@react-navigation/drawer";
 
 const NavigationpropsScreen = ({ navigation }) => {
-  const isDrawerOpen = useDrawerStatus() === "open";
-  console.log(isDrawerOpen, "isDrawerOpen");
   const array = [
     {
       name: "Native",
@@ -37,7 +35,7 @@ const NavigationpropsScreen = ({ navigation }) => {
   const a = 1;
   const b = 2;
   return (
-    <SafeAreaView style={{ opacity: isDrawerOpen === true ? 0.2 : 1 }}>
+    <SafeAreaView style={{ opacity: 1 }}>
       <TouchableOpacity
         onPress={() => {
           navigation.openDrawer();
