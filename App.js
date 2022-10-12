@@ -36,6 +36,7 @@ const MaterialBottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const MaterialBottomTab1 = createMaterialBottomTabNavigator();
 const App = () => {
+  console.log("starging app");
   const array = [
     { name: "Home", route: "" },
     { name: "FlatList1", route: "" },
