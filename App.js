@@ -206,8 +206,8 @@ const BottomTabNavigator = () => {
       // activeColor="black"
     >
       <MaterialBottomTab.Screen
-        name="TabBar"
-        component={TabBar}
+        name="Calculators"
+        component={Calculator}
         labeled={true}
         options={{
           tabBarLabel: ({ focused }) => {

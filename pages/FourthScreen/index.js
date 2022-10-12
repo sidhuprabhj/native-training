@@ -67,6 +67,13 @@ const FourthScreen = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <TouchableOpacity
         onPress={() => {
+          navigation.openDrawer();
+        }}
+      >
+        <Ionicons name="menu" size={30} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
           navigation.goBack();
         }}
       >

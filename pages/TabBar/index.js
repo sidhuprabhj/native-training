@@ -1,6 +1,7 @@
 import { View, SafeAreaView, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import DisplayData from "./DisplayData";
+import UseStateData from "../UseStateData";
 
 const TabBar = ({ navigation }) => {
   const [tabBarState, setTabBarState] = React.useState("Two");
@@ -49,7 +50,7 @@ const TabBar = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {tabBarState == "One" ? (
+      {/* {tabBarState == "One" ? (
         <View style={{}}>
           <DisplayData data={tabBarState} navigation={navigation} />
         </View>
@@ -65,7 +66,8 @@ const TabBar = ({ navigation }) => {
         <DisplayData data={tabBarState} navigation={navigation} />
       ) : (
         <></>
-      )}
+      )} */}
+      <UseStateData />
     </SafeAreaView>
   );
 };
